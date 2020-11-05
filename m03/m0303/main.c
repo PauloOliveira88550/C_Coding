@@ -1,28 +1,38 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 unsigned short us2uc(unsigned short x)
 {
-	unsigned short a=0;
+	unsigned short a;
 
-	if(x <= 255) {printf("ok\n");}
-
-		else {a =x-255; printf("error: %hu\n",a);}
+	a = x + 255;
+	return a;
 }
 
 
-int main() 
+int main(int argc, char *argv[]) 
 {
-	unsigned short x;
-	char a;
-	a = getchar();
+	if(argc != 2)
+	{
+		printf("\nErro de sintaxe\n");
+		return -1;
+	}
 
-	while(a != EOF)
-		{
-			printf("?");
-			scanf("%hu", &x);
-			us2uc(x);
-			a = getchar();
-		}
+	unsigned  short var;
+ 	var = atoi(argv[1]);
+
+	unsigned short c;
+	c = us2uc(var);
+
+	if(c<=510)
+	{
+		printf("\nOK\n");
+	}
+
+	if(c>510)
+	{
+		printf("Error: %d\n", c-510);
+	}
 
 return 0; 
 }
