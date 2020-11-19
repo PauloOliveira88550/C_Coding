@@ -30,7 +30,7 @@ int main()
 			if (z == invert)
 			{
 				acc ++;
-				printf("%d", z);
+				printf("%d  ", z);
 			}
 		}
 		if (acc==0)
