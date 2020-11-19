@@ -7,42 +7,19 @@ int main ()
 	int c;
 	int i=0;
 
-	char x, texto[1024];
-
-	while((x=getchar()) != EOF)
+	char a;
+	while((a= getchar()) !=EOF)
 	{
-		if(x == '\')
+		if (a == '\t')
 		{
-			if((x=getchar())=='t')
-			{
-
-				c= 0;
-				while(c<5)
-				{
-					texto[i]= ' ';
-					i++;
-					c++;
-				}
-			}
-
-			else 
-			{
-				texto[i]= '\';
-				i++;
-				texto[i]=x;
-				i++;
-			}
+			printf("    ");
 		}
-
 		else
 		{
-			texto[i]=x;
-			i++;
+			printf("%c", a);
 		}
 	}
 
-	texto[i] = '\0';
-	printf("\n%s\n", texto);
 	return 0;
 }
 
