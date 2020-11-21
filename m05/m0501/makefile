@@ -1,7 +1,5 @@
 CC=gcc
-PROG=m0404
-
-
+PROG=m0104
 
 $(PROG): main.o
 	$(CC) -o $(PROG) main.o
