@@ -2,28 +2,70 @@
 
 int main()
 {
-  // TODO
-printf ("Intruduza o texto\n");
+	char ficheiro;
+	int linhas=0;
+	int pal=0;
+	int car=0;
+	int count=0;
+	char anterior_f = 0;
 
-int a=0, b=0, c=0;
-
-char ch;
-while(ch != EOF) {
-ch = getchar();
-
-if(ch != ' ' && ch != '\n' && (ch-1 != ' ' || ch-1 != '\n')) {++a;};
-
-if ((ch == ' ' && ch-1 != ' ') || (ch == '\n' && (ch-1 != ' ' && ch-1 != '\n'))) {++b;};
-
-if (ch == '\n') {++c;};
-
+while(ficheiro != EOF)
+{
+  ficheiro=getchar();
+		
+	if(ficheiro  == ' ' && count==0)
+  {
+	  if(anterior_f == 0)
+    {
+			car++;
+			count++;
+    }
+     else 
+    {
+			pal++;
+			car++;
+			count++;
+		}
+	}
+		else if(ficheiro == ' ' && count >= 1)
+    {
+			car++;
+			count++;
+		}
+			
+	 	else if(ficheiro == '\n' && count == 0)
+    {
+			if(anterior_f == 0)
+      {
+				linhas++;
+				car++;
+				count++;
+      }
+      else 
+      {
+				linhas++;
+				car++;
+				pal++;
+				count++;
+			}
+		}
+		else if(ficheiro == '\n' && count >= 1)
+    {
+			linhas++;
+			car++;
+			count++;
+ 		} 
+    else if((ficheiro >= 'a' && ficheiro <= 'z') || (ficheiro >= 'A' && ficheiro <= 'Z') || (ficheiro >= '0' && ficheiro <= '9')) 
+    {
+		  car++;
+			count = 0;
+    } 
+    else if(ficheiro == EOF && (anterior_f >= 'a' && anterior_f <= 'z') || (anterior_f >= 'A' && anterior_f <= 'Z') || (anterior_f >= '0' && anterior_f <= '9'))
+    {
+			pal++;
+    }
+		anterior_f = ficheiro;
 }
-
-if (ch == EOF) { 
-printf ("linhas = %d; palavras = %d; letras = %d\n", c, b, a);
-};
-
- 
-
-  return 0;
+	
+	printf("\nlinhas=%d palavras=%d caracteres=%d\n", linhas, pal, car);
 }
