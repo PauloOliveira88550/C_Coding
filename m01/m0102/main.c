@@ -2,13 +2,15 @@
 
 int main()
 {
-  // TODO
+	printf("%li \n",sizeof(char));
+	printf("%li \n",sizeof(short));
+	printf("%li \n",sizeof(int));
+	printf("%li \n",sizeof(long int));
 
-printf("%lu -> sizeof char\n", sizeof(char));
-printf("%lu -> sizeof short\n", sizeof(short));
-printf("%lu -> sizeof int\n", sizeof(int));
-printf("%lu -> sizeof long\n", sizeof(long));
+	char a=127;
+	printf("%i \n",a);
 
-  return 0;
+	a += 1;
+	printf("%i \n",a);
 }
 
