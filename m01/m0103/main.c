@@ -2,14 +2,12 @@
 
 int main()
 {
-  // TODO
+	char c;
+	while((c=getchar())!=EOF)
+	{
+	putchar(c);
+	}
 
-  char c;
-    
-    while(c!=EOF){
- c = getchar();
-putchar(c);
+	return 0;
 }
 
-  return 0;
-}
