@@ -12,6 +12,15 @@ void clear_stdin()
 }
 
 
+int valida(a)
+{
+	int n=0;
+
+	if(a<0 || a > 99999)
+		n=0;
+return n;
+}
+
 int main()
 {
 
@@ -26,6 +35,8 @@ int main()
 	{
 		printf("Numero: ");
 		n=scanf("a%5d", &numero);
+		printf("%d\n", numero);
+		valida(&numero);
 		clear_stdin();
 	}
 
@@ -93,7 +104,7 @@ int main()
 
 	idade = anoAtual-ano-1;
 
-	printf("\na%d - %s \n%02d/%02d/%4d (%d anos) \n%s - %d\n", numero, nome, dia, mes, ano, idade, curso, matricula);
+	printf("\na%s - %s \n%02d/%02d/%4d (%d anos) \n%s - %d\n", numero, nome, dia, mes, ano, idade, curso, matricula);
 
 	return 0;
 }
