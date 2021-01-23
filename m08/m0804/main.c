@@ -1,32 +1,45 @@
+#include <stdio.h>
+
 int main()
 {
-    int a1, a2, a3, a4, a5, a6, a7, a8;
-    int p=0, p1=0;
-    long int ip1, ip2;
-    int conta=0;
+    int ipv4[2][4] = {0};
+    long ip1, ip2;
+    short erros = 0, pass;
+    char maior;
 
-    printf ("? ");
-    conta = scanf("%3d.%3d.%1d.%3d %3d.%3d.%1d.%3d", &a1, &a2, &a3, &a4, &a5, &a6, &a7, &a8);
+    printf("? ");
+    pass = scanf("%3d.%3d.%3d.%3d", &ipv4[0][0], &ipv4[0][1], &ipv4[0][2], &ipv4[0][3]);
 
-    if (conta != 8)
+    if(pass != 4)
     {
-        printf ("um dos enderecos esta incorrecto");
-        return 0;
+        stdin->_IO_read_ptr = stdin->_IO_read_end;
+        erros++;
     }
 
-    while (getchar() != '\n');
+    pass = scanf("%3d.%3d.%3d.%3d", &ipv4[1][0], &ipv4[1][1], &ipv4[1][2], &ipv4[1][3]);
 
-    ip1 = 1000 * (1000000 * a1 + 1000 * a2 + a3) + a4;
-    ip2 = 1000 * (1000000 * a5 + 1000 * a6 + a7) + a8;
+    if(pass != 4)
+    {
+        stdin->_IO_read_ptr = stdin->_IO_read_end;
+        erros++;
+    }
 
-    if (ip1 > ip2)
-        printf ("%3d.%3d.%1d.%3d\n", a1, a2, a3, a4);
-    else
-        if (ip1 < ip2)
-            printf ("%3d.%3d.%1d.%3d\n", a5, a6, a7, a8);
-        else 
-            printf ("os dois IPs sao iguais\n");
+    if(erros == 0)
+    {
+        ip1 = (long)ipv4[0][0]*1000000000 + (long)ipv4[0][1]*1000000 + (long)ipv4[0][2]*1000 + (long)ipv4[0][3];
+        ip2 = (long)ipv4[1][0]*1000000000 + (long)ipv4[1][1]*1000000 + (long)ipv4[1][2]*1000 + (long)ipv4[1][3];
+        
+        if(ip1 >= ip2)
+            printf("%d.%d.%d.%d", ipv4[0][0], ipv4[0][1], ipv4[0][2], ipv4[0][3]);
+        else
+            printf("%d.%d.%d.%d", ipv4[1][0], ipv4[1][1], ipv4[1][2], ipv4[1][3]);
+    }
 
+    else if(erros == 1)
+        printf("um dos enderecos esta incorreto\n");
 
+    else if(erros == 2)
+        printf("os dois enderecos estao incorretos\n");
 
+    return 0;
 }
